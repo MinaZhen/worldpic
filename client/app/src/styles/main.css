@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed|Montserrat');
+
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Encode Sans Semi Condensed', Helvetica, sans-serif;
+    color: #f15a24;
+    background: linear-gradient(130deg, #ffe7df, #ffffff, #ffede7)
+}
+
+body * {  margin: 0; }
+
+header, footer, nav {
+    background-color: #f15a24;
+    min-height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    color:white;
+    text-decoration: none;
+}
+
+header{
+    position: fixed;
+    top:0 ;
+    z-index:10;
+    height: 50px;
+    margin: 0;
+}
+
+span {font-size: 1.1em;}
+
+nav { justify-content: flex-end }
+
+nav * { margin-right: 2em }
+
+.link, a { text-decoration: none; cursor: pointer;}
+
+.link:visited, a:visited, .link:active, a:active, .link:link, a:link { color: white; }
+
+.title_wp {
+    width: 130px;
+    height: 40px;
+    padding-left:5px;
+}
+
+a, h1, h2, h3, h4, h5, h6 {font-family: 'Montserrat', Helvetica, sans-serif; }
+
+small {font-size: 0.6em}
+
+containers h1 { 
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1em ;
+    text-align: center;
+}
+
+.containers {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+    min-height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+::-webkit-scrollbar { display: none; }
+
+.world {
+    margin-top: 50px; 
+    min-height: calc(100vh - 100px);
+    text-align: center;
+    background: radial-gradient(circle,#ffded255, #fffef855 70%);
+}
+
+
+.landing { position: relative; }
+
+.three-d {
+    position: fixed;
+    top: 50px;
+    width:100vw;
+    height: 50vw;    
+}
+
+form, .info {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 100px;
+    width: 300px;
+}
+
+form * {
+    outline: 0;
+    margin: 4px;
+    margin-bottom: 1em;
+    text-align: center;
+    font-family: 'Encode Sans Semi Condensed', Helvetica, sans-serif;
+    font-size: 1.05em;
+    background-color: transparent;
+    color: #f15a24;
+    border: 0;
+    border-bottom: 0.2px solid #f15a24;
+}
+
+button:not(.menu-button), .file-upload-container   {
+    outline: 0;
+    margin-top: 1em;
+    height: 3em;
+    border: 2px solid #f15a24;
+    border-radius: 5px;
+    color: #f15a24;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    background-color: #ffe7df;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.file-upload-container{
+    height: 1.5em;
+    width: 200px;
+    margin: 10px auto;
+}
+
+button:not(.menu-button):hover, .file-upload-container:hover  {
+    background-color: #f15b2481;
+    color: white;
+}
+
+footer a{
+    font-family: 'Encode Sans Semi Condensed', Helvetica, sans-serif;
+}
+
+.modal {
+    position: fixed; 
+    z-index: 2; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.error-modal {
+    position: relative;
+    background-color: #fffaf8;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.message-modal {
+    position: relative;
+    background-color: #fffaf8;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 50vw;
+    height: 30vw;
+    box-shadow: 0 0 3px 0 #ffffff;
+    animation-name: animateshow;
+    animation-duration: 0.4s
+}
+
+.message-modal * {
+    animation-name: animate-msg;
+    animation-duration: 0.6s;
+}
+
+@keyframes animate-msg { 0% {opacity:0} 50% {opacity:0} 100% {opacity:1}}
+@keyframes animatetop { from {top:-300px; opacity:0} to {top:0; opacity:1}}
+@keyframes animateshow { 
+    from {opacity:0;width: 0vw;height: 0vw; transform: translateY(100%)} 
+    to {opacity:1;width: 50vw; height: 30vw;}}
+
+.modal-header {margin-bottom: 1em; padding: 2px 16px;}
+.modal-body {padding: 2px 16px;}
+.modal-footer {padding: 2px 16px;}
+
+.modal-footer button {
+    height: 30px;
+    width: 50px;
+    margin: 30px 15px 20px;
+    font-family: 'Encode Sans Semi Condensed', Helvetica, sans-serif;
+}
