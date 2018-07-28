@@ -1,4 +1,4 @@
-# 🌍 WorldPic 1.0.0 📷
+# 🌍 WorldPic 1.1.0 📷
 ________
 
 **WorldPic is an app for saving pictures located in a world map, showing which countries have been visited.**
