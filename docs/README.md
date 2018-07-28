@@ -1,4 +1,4 @@
-# 🌍 WorldPic 1.0.0 📷
+# 🌍 WorldPic 1.1.0 📷
 ________
 
 **WorldPic is an app for saving pictures located in a world map, showing which countries have been visited.**
@@ -116,7 +116,7 @@ git clone https://github.com/MinaZhen/worldPic.git
             └── ...
 ```
 
-Navigate into worldPic, go and run npm install in each marked* folder. Also you will create in each marked folder except client/app a .env or write manually the parameters in the scripts. .env variables are easy to disguise because are writted in upper case.
+Navigate into worldPic, go and run npm install in each marked* folder.
 
 ```
 cd server/data
@@ -132,14 +132,13 @@ Once this is done, you can work it!
 
 ## Version
 
-WorldPic1.0.0 
+WorldPic1.1.0 
 
 #### Next releases 
 
-1.1.. - Flat and globe maps, reponsive and zoomable.
-1.2.. - Update user info.
-1.... - Improving private app.
-2.0.0 - Find users.
+- 1.2.0 - Update user info.
+- 1.3.0 - Improving private app.
+- 2.0.0 - Find users.
 
 ## Author
 
