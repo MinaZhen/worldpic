@@ -30,6 +30,12 @@ header{
     margin: 0;
 }
 
+footer{
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+}
+
 span {font-size: 1.1em;}
 
 nav { justify-content: flex-end }
@@ -72,10 +78,11 @@ containers h1 {
 ::-webkit-scrollbar { display: none; }
 
 .world {
+    display: grid;
     margin-top: 50px; 
     min-height: calc(100vh - 100px);
     text-align: center;
-    background: radial-gradient(circle,#ffded255, #fffef855 70%);
+    background: radial-gradient(circle,rgba(255, 222, 210, 0.2), rgba(255, 254, 248, 0.2) 70%);
 }
 
 
@@ -85,7 +92,7 @@ containers h1 {
     position: fixed;
     top: 50px;
     width:100vw;
-    height: 50vw;    
+    height: calc(100vh - 100px);    
 }
 
 form, .info {
@@ -107,6 +114,10 @@ form * {
     color: #f15a24;
     border: 0;
     border-bottom: 0.2px solid #f15a24;
+}
+
+button {
+    cursor: pointer;
 }
 
 button:not(.menu-button), .file-upload-container   {

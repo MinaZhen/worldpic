@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Three from "./landing/Three"
 
+let fakeEvent = {deltaY: 0, touchWheel : 0}
+
 class Landing extends Component {
     state = {
         wheel : 0,
@@ -12,6 +14,7 @@ class Landing extends Component {
     }
     _onWheel = (e) => {
         let wheel = e.deltaY
+
         let opacity = this.state.opacity + wheel * 0.0005
         opacity %= 4
         if (opacity < 0) opacity = 4
@@ -22,6 +25,19 @@ class Landing extends Component {
         this.setState({ opacity, wheel })
         this.divSwitch(int, add, subs)
     }
+
+    _onTouch = (e) => {    
+        let y = e.touches[0].clientY 
+
+        if (fakeEvent.touchWheel < y){
+            fakeEvent.deltaY = 70
+        } else {
+            fakeEvent.deltaY = -70
+        }
+        fakeEvent.touchWheel = y
+        this._onWheel(fakeEvent)
+
+      }
 
     divSwitch(int, add, subs) {
         switch(int){
@@ -45,7 +61,7 @@ class Landing extends Component {
         const { div1, div2, div3, div4} = this.state
         return (
             
-            <div className="containers landing" onWheel={this._onWheel}>
+            <div className="containers landing" onWheel={this._onWheel} onTouchMove={this._onTouch}>
                 <div className="three-z-5">
                     <Three/>
                 </div>
@@ -66,7 +82,10 @@ class Landing extends Component {
                         <h1> Share </h1>
                         <p> Experiences </p>
                     </div>
-                    <div className="message-scroll"> Scroll up or down </div>
+                    <div className="message-scroll">
+                        <div className="message-scroll-desktop"> Scroll up or down </div>
+                        <div className="message-scroll-mobile"><br/>Scroll up or down or drag with two fingers</div>
+                    </div>
                 </div>
             </div>
         )

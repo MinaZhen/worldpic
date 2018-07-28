@@ -3,10 +3,10 @@ import * as THREE from 'three';
 import model from './worldpic.json';
 import airplane from './avion.json';
 
-let rend = {}
 const div = { x: 600, y: 400 }
-
+let rend = {}
 let rot = 0
+let lastY = 0
 
 class Three extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Three extends Component {
     this.start = this.start.bind(this)
     this.stop = this.stop.bind(this)
     this.animate = this.animate.bind(this)
+    this._updateDimensions = this._updateDimensions.bind(this)
   }
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class Three extends Component {
       1000
     )
     const clock = new THREE.Clock();
-    camera.position.z = 5
+    camera.position.z = 8
     
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setClearColor(0xff00ff, 0)
@@ -81,12 +82,31 @@ class Three extends Component {
     this.mount.removeChild(this.renderer.domElement)
   }
 
+  _onTouch(e) {
+    let rect = e.target.getBoundingClientRect()
+    
+    let y = e.touches[0].clientY - rect.top
+    
+    if (e.touches.length > 1) {
+      let x = e.touches[0].clientX - rect.left
+      this.screen_x = x - (div.x * 0.5)
+      this.screen_y = y - (div.y * 0.5)
+    } else {
+      if (lastY < y){
+        rot += 0.0001
+      } else {
+        rot -= 0.0001
+      }
+      lastY = y
+      if (rot > 0.01) rot = 0.01; else if (rot < 0) rot = 0;
+      rot = parseFloat(rot.toFixed(7))
+    }
+  }
+
   _onMouseMove(e) {
     let rect = e.target.getBoundingClientRect()
-
     let x = e.clientX - rect.left
     let y = e.clientY - rect.top
-
     this.screen_x = x - (div.x * 0.5)
     this.screen_y = y - (div.y * 0.5)
   }
@@ -98,8 +118,13 @@ class Three extends Component {
   }
 
   _updateDimensions() {
-    let wWidth = window.innerWidth
-    rend.setSize(wWidth, wWidth * 0.5)
+    const h = window.innerHeight - 100
+    const w = window.innerWidth
+    
+    this.camera.aspect = w / h;
+    this.camera.updateProjectionMatrix();
+
+    this.renderer.setSize( w, h );
   }
 
   start() {
@@ -132,6 +157,7 @@ class Three extends Component {
     return (
       <div className="three-d"
         onMouseMove={this._onMouseMove.bind(this)}
+        onTouchMove={this._onTouch.bind(this)}
         onWheel={this._onWheel.bind(this)}
         ref={(mount) => { this.mount = mount }}
       />
